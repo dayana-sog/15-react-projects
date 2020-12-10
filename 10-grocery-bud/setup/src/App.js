@@ -67,6 +67,19 @@ function App() {
     setName(specificItem.title);
   }; 
 
+  useEffect(() => {
+    const localItem = localStorage.getItem('list');
+  
+    if (localItem) {
+      setList(JSON.parse(localItem));
+    }
+
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
+
   return (
     <section className="section-center">
       <div className="grocery-container">
